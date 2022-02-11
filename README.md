@@ -1,4 +1,4 @@
-# Welcome to Chatty!
+# Welcome to Chatty 🗨️!
 
 ## It is a chat messenging system made with Socket.io
 
