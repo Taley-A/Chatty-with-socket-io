@@ -31,11 +31,18 @@ app.use(cors());
 io.on("connection", (socket) => {
 	console.log("New connection from " + socket.id);
 
-	socket.on("join_room", (data) => {
+	// When user joins a room
+	socket.on("joinRoom", (data) => {
 		socket.join(data);
 		console.log(`User with ID: ${socket.id} has joined room ${data}`);
 	});
 
+	// When a user enters a message
+	socket.on("sendMessage", (data) => {
+		socket.to(data.room).emit("receiveMessage", data);
+	});
+
+	// When a user disconnects
 	socket.on("disconnect", () => {
 		console.log(`User Disconnected ${socket.id}.`);
 	});
