@@ -26,25 +26,29 @@ const App = () => {
 			<Box>
 				<Wrapper>
 					<Title>Welcome to Chatty!</Title>
-					<Info>Instantly connect and chat with anyone!</Info>
-					<InputContainer>
-						<Name
-							type="text"
-							placeholder="User Name"
-							onChange={(ev) => {
-								setUserName(ev.target.value);
-							}}
-						/>
-						<Room
-							type="text"
-							placeholder="Room ID"
-							onChange={(ev) => {
-								setRoom(ev.target.value);
-							}}
-						/>
-						<Button onClick={joinRoom}>Join a Room</Button>
-					</InputContainer>
-
+					<Info>
+						<P>Select a user name and a room number</P>
+						to instantly connect and chat!
+					</Info>
+					<JoinRoom>
+						<InputContainer>
+							<Name
+								type="text"
+								placeholder="User Name"
+								onChange={(ev) => {
+									setUserName(ev.target.value);
+								}}
+							/>
+							<Room
+								type="text"
+								placeholder="Room ID"
+								onChange={(ev) => {
+									setRoom(ev.target.value);
+								}}
+							/>
+						</InputContainer>
+						<Button onClick={joinRoom}>Connect</Button>
+					</JoinRoom>
 					{readyToSubmit === true ? (
 						<Chat socket={socket} userName={userName} room={room} />
 					) : (
@@ -69,8 +73,11 @@ const Box = styled.div`
 const Wrapper = styled.form`
 	text-align: center;
 	border: 5px solid green;
-	margin: 1rem;
+	margin: auto;
+	width: 50rem;
+	height: 50rem;
 `;
+
 const Title = styled.h2`
 	margin: 3rem;
 `;
@@ -78,16 +85,43 @@ const Info = styled.div`
 	margin: 2rem;
 `;
 
+const P = styled.p`
+	margin-bottom: 1rem;
+`;
+
 const InputContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-right: 2rem;
 `;
+
+const JoinRoom = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
 const Name = styled.input`
-	margin: 1rem;
+	margin: 0 1rem 1rem 1rem;
 `;
 const Room = styled.input`
 	margin-bottom: 1rem;
 `;
-const Button = styled.button``;
+const Button = styled.button`
+	background-color: #01bf71;
+	color: #010606;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	font-weight: 600;
+	font-size: 1.5rem;
+	border-radius: 20px;
+	width: 9rem;
+	height: 4rem;
+	transition: all 0.2s ease-in-out;
+	&:hover {
+		transition: all 0.2s ease-in-out;
+		transform: scale(1.2);
+	}
+`;

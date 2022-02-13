@@ -44,7 +44,9 @@ const Chat = ({ socket, userName, room }) => {
 
 export default Chat;
 
-const Container = styled.div``;
+const Container = styled.div`
+	margin-top: 2rem;
+`;
 const Header = styled.div``;
 const Body = styled.div``;
 const Footer = styled.div``;
