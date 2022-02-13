@@ -6,7 +6,9 @@ const Chat = ({ socket, userName, room }) => {
 	const [currentMessage, setCurrentMessage] = useState("");
 
 	useEffect(() => {
-		socket.on("receiveMessage");
+		socket.on("receiveMessage", (data) => {
+			console.log(data);
+		});
 	}, [socket]);
 
 	const sendMessage = async () => {
