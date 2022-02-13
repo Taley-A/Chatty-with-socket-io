@@ -20,7 +20,6 @@ const Chat = ({ socket, userName, room }) => {
 				message: currentMessage,
 				time: moment().format("MMMM Do, h:mm a"),
 			};
-
 			await socket.emit("sendMessage", messageData);
 		}
 	};
